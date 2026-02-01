@@ -1,0 +1,31 @@
+自我介绍
+=========
+
+开发者
+全栈开发 / JavaScript / DevOps
+
+联系方式
+-------
+
+* 邮箱: example@example.com
+* GitHub: github.com/example
+
+项目经历
+--------
+
+* 个人网站项目
+* 开源工具开发
+* Web应用开发
+
+开源贡献
+-----------
+
+* 前端框架
+* UI组件库
+* 开发工具
+
+图片
+------
+
+* [图片1](/img/partyrock1.jpg)
+  * [图片2](/img/partyrock2.jpg)
