@@ -9,6 +9,7 @@
     "watch": "webpack --progress --watch",
     "clean": "rm -rf dist"
   },
+  "homepage": "https://your-github-username.github.io/self-coding-intro",
   "keywords": [
     "interactive",
     "animation",

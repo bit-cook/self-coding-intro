@@ -15,6 +15,45 @@ An interactive web page that demonstrates a self-typing code animation effect. W
 
 [Live Demo](https://your-github-username.github.io/self-coding-intro)
 
+## 🚀 Deploy to GitHub Pages
+
+本项目已配置 GitHub Actions 自动部署。只需 push 到 main 分支即可自动部署。
+
+### 自动部署步骤
+
+1. **Fork/Clone 项目到 GitHub**
+
+2. **启用 GitHub Pages**
+   - 进入仓库的 **Settings** → **Pages**
+   - **Build and deployment** → **Source** 选择 **GitHub Actions**
+
+3. **Push 到 main 分支**
+   ```bash
+   git push origin main
+   ```
+   
+   推送后会自动触发部署工作流。
+
+4. **查看部署状态**
+   - 进入仓库的 **Actions** 标签页查看部署进度
+   - 部署完成后，访问 `https://你的用户名.github.io/self-coding-intro/`
+
+### 手动部署（可选）
+
+```bash
+# 安装依赖并构建
+npm install
+npm run build
+
+# 手动推送到 gh-pages 分支
+git checkout --orphan gh-pages
+git reset
+# 保留必要文件
+git add index.html dist/ ico/ img/ styles*.css work.txt header.html prestyles.css lib/
+git commit -m "Deploy"
+git push origin gh-pages --force
+```
+
 ## Getting Started
 
 ### Prerequisites
