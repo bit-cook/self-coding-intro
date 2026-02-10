@@ -7,8 +7,8 @@
 联系方式
 -------
 
-* 邮箱: [your-email@example.com]
-* GitHub: github.com/bit-cook
+* 邮箱: example@example.com
+* GitHub: github.com/example
 
 项目经历
 --------
@@ -27,5 +27,5 @@
 图片
 ------
 
-* [图片1](./img/partyrock1.jpg)
-  * [图片2](./img/partyrock2.jpg)
+* [图片1](/img/partyrock1.jpg)
+  * [图片2](/img/partyrock2.jpg)
