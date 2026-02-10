@@ -5,10 +5,18 @@
 
 #work-text.flipped {
   -webkit-transform: rotateX(0deg) rotateY(190deg) rotateZ(180deg);
+  -moz-transform: rotateX(0deg) rotateY(190deg) rotateZ(180deg);
+  -ms-transform: rotateX(0deg) rotateY(190deg) rotateZ(180deg);
+  -o-transform: rotateX(0deg) rotateY(190deg) rotateZ(180deg);
+  transform: rotateX(0deg) rotateY(190deg) rotateZ(180deg);
 }
 
 #work-text .md {
   -webkit-transform: rotateY(190deg) rotateZ(180deg);
+  -moz-transform: rotateY(190deg) rotateZ(180deg);
+  -ms-transform: rotateY(190deg) rotateZ(180deg);
+  -o-transform: rotateY(190deg) rotateZ(180deg);
+  transform: rotateY(190deg) rotateZ(180deg);
   margin-top: 800px;
 }
 

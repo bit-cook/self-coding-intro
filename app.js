@@ -1,10 +1,15 @@
 import 'classlist-polyfill';
 import Promise from 'bluebird';
 import { marked } from 'marked';
+import mouseWheel from 'mouse-wheel';
 import workText from './work.txt';
 // pgp.txt removed for privacy
 import headerHTML from './header.html';
-let styleText = [0, 1, 2, 3].map((i) => require('./styles' + i + '.css'));
+import styles0 from './styles0.css';
+import styles1 from './styles1.css';
+import styles2 from './styles2.css';
+import styles3 from './styles3.css';
+const styleText = [styles0, styles1, styles2, styles3];
 import preStyles from './prestyles.css';
 import replaceURLs from './lib/replaceURLs';
 import {default as writeChar, writeSimpleChar, handleChar} from './lib/writeChar';
@@ -18,13 +23,37 @@ let animationSkipped = false, done = false, paused = false;
 let browserPrefix;
 
 // Wait for load to get started.
-document.addEventListener("DOMContentLoaded", function() {
-  getBrowserPrefix();
-  populateHeader();
-  getEls();
-  createEventHandlers();
-  startAnimation();
+document.addEventListener("DOMContentLoaded", async function() {
+  try {
+    getBrowserPrefix();
+    populateHeader();
+    getEls();
+    createEventHandlers();
+    hideLoading();
+    await startAnimation();
+  } catch (err) {
+    console.error('Animation error:', err);
+    showError('动画启动失败，请刷新页面重试。');
+  }
 });
+
+// Hide loading spinner
+function hideLoading() {
+  const loading = document.getElementById('loading');
+  if (loading) {
+    loading.classList.add('hidden');
+    setTimeout(() => loading.remove(), 500);
+  }
+}
+
+// Show error message
+function showError(message) {
+  const loading = document.getElementById('loading');
+  if (loading) {
+    loading.innerHTML = '<div style="text-align:center;"><p>' + message + '</p><button onclick="location.reload()" style="padding:8px 16px;margin-top:10px;cursor:pointer;">刷新</button></div>';
+    loading.classList.remove('hidden');
+  }
+}
 
 async function startAnimation() {
   try {
@@ -42,6 +71,7 @@ async function startAnimation() {
     if (e.message === "SKIP IT") {
       surprisinglyShortAttentionSpan();
     } else {
+      console.error('Animation error:', e);
       throw e;
     }
   }
@@ -161,26 +191,32 @@ function populateHeader() {
 //
 function createEventHandlers() {
   // Mirror user edits back to the style element.
-  styleEl.addEventListener('input', function() {
-    style.textContent = styleEl.textContent;
-  });
+  if (styleEl) {
+    styleEl.addEventListener('input', function() {
+      style.textContent = styleEl.textContent;
+    });
+  }
 
   // Skip anim on click to skipAnimation
-  skipAnimationEl.addEventListener('click', function(e) {
-    e.preventDefault();
-    animationSkipped = true;
-  });
+  if (skipAnimationEl) {
+    skipAnimationEl.addEventListener('click', function(e) {
+      e.preventDefault();
+      animationSkipped = true;
+    });
+  }
 
-  pauseEl.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (paused) {
-      pauseEl.textContent = "Pause ||";
-      paused = false;
-    } else {
-      pauseEl.textContent = "Resume >>";
-      paused = true;
-    }
-  });
+  if (pauseEl) {
+    pauseEl.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (paused) {
+        pauseEl.textContent = "Pause ||";
+        paused = false;
+      } else {
+        pauseEl.textContent = "Resume >>";
+        paused = true;
+      }
+    });
+  }
 }
 
 //
@@ -196,7 +232,7 @@ function createWorkBox() {
 
   // flippy floppy
   let flipping = 0;
-  require('mouse-wheel')(workEl, async function(dx, dy) {
+  mouseWheel(workEl, async function(dx, dy) {
     if (flipping) return;
     let flipped = workEl.classList.contains('flipped');
     let half = (workEl.scrollHeight - workEl.clientHeight) / 2;

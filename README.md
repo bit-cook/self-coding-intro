@@ -147,6 +147,32 @@ const speed = isDev ? 0 : 16; // Lower is faster
 - Firefox (latest)
 - Safari (latest)
 
+## Troubleshooting
+
+### Page shows blank/empty
+
+If the deployed page shows blank, check the following:
+
+1. **Ensure `dist/app.js` is built**: Run `npm run build` to generate the production bundle
+2. **Check browser console**: Look for JavaScript errors in the browser's developer console
+3. **Verify file paths**: Make sure `index.html` can access `./dist/app.js` correctly
+
+### Common Issues
+
+**Issue**: `mouse-wheel` module not found
+- **Solution**: This has been fixed by using static ES6 imports instead of dynamic `require()`. Make sure you're using the latest version of `app.js`.
+
+**Issue**: Event listener errors
+- **Solution**: Added null checks for DOM elements before attaching event listeners.
+
+## Recent Updates
+
+- ✅ Fixed `mouse-wheel` dynamic require issue
+- ✅ Added null checks for event listeners
+- ✅ Improved CSS cross-browser compatibility
+- ✅ Added loading state indicator
+- ✅ Enhanced error handling
+
 ## License
 
 MIT License - feel free to use this for your own portfolio or projects!
