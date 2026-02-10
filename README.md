@@ -172,6 +172,11 @@ If the deployed page shows blank, check the following:
 - ✅ Improved CSS cross-browser compatibility
 - ✅ Added loading state indicator
 - ✅ Enhanced error handling
+- ✅ Fixed skip animation scroll logic bug
+- ✅ Updated ESLint config (replaced deprecated babel-eslint)
+- ✅ Removed obsolete Opera CSS prefixes
+- ✅ Added modern viewport and theme-color meta tags
+- ✅ Improved link security (noopener noreferrer)
 
 ## License
 

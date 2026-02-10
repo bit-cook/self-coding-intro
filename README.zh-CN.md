@@ -172,6 +172,11 @@ const speed = isDev ? 0 : 16; // 数值越小速度越快
 - ✅ 改进 CSS 跨浏览器兼容性
 - ✅ 添加加载状态指示器
 - ✅ 增强错误处理
+- ✅ 修复了跳过动画的滚动逻辑错误
+- ✅ 更新了 ESLint 配置（替换已弃用的 babel-eslint）
+- ✅ 移除了过时的 Opera CSS 前缀
+- ✅ 添加了现代 viewport 和 theme-color 元标签
+- ✅ 改进了链接安全性（noopener noreferrer）
 
 ## 许可证
 

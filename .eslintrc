@@ -1,13 +1,22 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-env"]
+    }
+  },
   "rules": {
     "strict": 0,
-    "quotes": ["single"],
-    "curly": "multi-line",
-    "no-use-before-define": "nofunc"
+    "quotes": ["error", "single"],
+    "curly": ["error", "multi-line"],
+    "no-use-before-define": ["error", "nofunc"],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "prefer-const": "warn"
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es2020": true
   }
 }

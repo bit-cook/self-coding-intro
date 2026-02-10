@@ -9,7 +9,7 @@ import styles0 from './styles0.css';
 import styles1 from './styles1.css';
 import styles2 from './styles2.css';
 import styles3 from './styles3.css';
-let styleText = [styles0, styles1, styles2, styles3];
+const styleTexts = [styles0, styles1, styles2, styles3];
 import preStyles from './prestyles.css';
 import replaceURLs from './lib/replaceURLs';
 import {default as writeChar, writeSimpleChar, handleChar} from './lib/writeChar';
@@ -65,14 +65,14 @@ function showError(message) {
 
 async function startAnimation() {
   try {
-    await writeTo(styleEl, styleText[0], 0, speed, true, 1);
+    await writeTo(styleEl, styleTexts[0], 0, speed, true, 1);
     await writeTo(workEl, workText, 0, speed, false, 1);
-    await writeTo(styleEl, styleText[1], 0, speed, true, 1);
+    await writeTo(styleEl, styleTexts[1], 0, speed, true, 1);
     createWorkBox();
     await Promise.delay(1000);
-    await writeTo(styleEl, styleText[2], 0, speed, true, 1);
+    await writeTo(styleEl, styleTexts[2], 0, speed, true, 1);
     // PGP section removed for privacy
-    await writeTo(styleEl, styleText[3], 0, speed, true, 1);
+    await writeTo(styleEl, styleTexts[3], 0, speed, true, 1);
   }
   // Flow control straight from the ghettos of Milwaukee
   catch(e) {
@@ -90,7 +90,7 @@ async function surprisinglyShortAttentionSpan() {
   if (done) return;
   done = true;
   // pgpEl.innerHTML = ''; // PGP section removed for privacy
-  let txt = styleText.join('\n');
+  const txt = styleTexts.join('\n');
 
   // The work-text animations are rough
   style.textContent = "#work-text * { " + browserPrefix + "transition: none; }";
@@ -102,14 +102,10 @@ async function surprisinglyShortAttentionSpan() {
   styleEl.innerHTML = styleHTML;
   createWorkBox();
 
-  // There's a bit of a scroll problem with this thing
-  let start = Date.now();
-  while(Date.now() - 1000 > start) {
-    workEl.scrollTop = Infinity;
-    styleEl.scrollTop = Infinity;
-    if (pgpEl) pgpEl.scrollTop = Infinity;
-    await Promise.delay(16);
-  }
+  // Ensure scroll positions are at bottom after skip
+  workEl.scrollTop = workEl.scrollHeight;
+  styleEl.scrollTop = styleEl.scrollHeight;
+  if (pgpEl) pgpEl.scrollTop = pgpEl.scrollHeight;
 }
 
 
@@ -117,9 +113,9 @@ async function surprisinglyShortAttentionSpan() {
  * Helpers
  */
 
-let endOfSentence = /[\.\?\!]\s$/;
-let comma = /\D[\,]\s$/;
-let endOfBlock = /[^\/]\n\n$/;
+const END_OF_SENTENCE = /[\.\?\!]\s$/;
+const COMMA = /\D[\,]\s$/;
+const END_OF_BLOCK = /[^\/]\n\n$/;
 
 async function writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval){
   if (!el) {
@@ -151,10 +147,10 @@ async function writeTo(el, message, index, interval, mirrorToStyle, charsPerInte
   // Schedule another write.
   if (index < message.length) {
     let thisInterval = interval;
-    let thisSlice = message.slice(index - 2, index + 1);
-    if (comma.test(thisSlice)) thisInterval = interval * 30;
-    if (endOfBlock.test(thisSlice)) thisInterval = interval * 50;
-    if (endOfSentence.test(thisSlice)) thisInterval = interval * 70;
+    const thisSlice = message.slice(index - 2, index + 1);
+    if (COMMA.test(thisSlice)) thisInterval = interval * 30;
+    if (END_OF_BLOCK.test(thisSlice)) thisInterval = interval * 50;
+    if (END_OF_SENTENCE.test(thisSlice)) thisInterval = interval * 70;
 
     do {
       await Promise.delay(thisInterval);
@@ -171,9 +167,10 @@ async function writeTo(el, message, index, interval, mirrorToStyle, charsPerInte
 function getBrowserPrefix() {
   // Ghetto per-browser prefixing
   browserPrefix = getPrefix(); // could be empty string, which is fine
-  styleText = styleText.map(function(text) {
-    return text.replace(/-webkit-/g, browserPrefix);
-  });
+  // Replace -webkit- prefix with browser-specific prefix (if any)
+  for (let i = 0; i < styleTexts.length; i++) {
+    styleTexts[i] = styleTexts[i].replace(/-webkit-/g, browserPrefix);
+  }
 }
 
 //

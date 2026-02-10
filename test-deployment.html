@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deployment Test</title>
+    <script>
+        // Test script to verify the deployed site works
+        window.addEventListener('load', function() {
+            const results = document.getElementById('results');
+            
+            // Test 1: Check if site is accessible
+            fetch('https://bit-cook.github.io/self-coding-intro/', {method: 'HEAD'})
+                .then(response => {
+                    const status = response.status === 200 ? 'PASS' : 'FAIL';
+                    results.innerHTML += `<p><strong>${status}:</strong> Site loads (HTTP ${response.status})</p>`;
+                })
+                .catch(err => {
+                    results.innerHTML += `<p><strong>FAIL:</strong> Site not accessible - ${err}</p>`;
+                });
+            
+            // Test 2: Check if app.js loads
+            fetch('https://bit-cook.github.io/self-coding-intro/dist/app.js', {method: 'HEAD'})
+                .then(response => {
+                    const status = response.status === 200 ? 'PASS' : 'FAIL';
+                    results.innerHTML += `<p><strong>${status}:</strong> app.js loads (HTTP ${response.status})</p>`;
+                })
+                .catch(err => {
+                    results.innerHTML += `<p><strong>FAIL:</strong> app.js not accessible - ${err}</p>`;
+                });
+                
+            // Test 3: Check HTML structure
+            fetch('https://bit-cook.github.io/self-coding-intro/')
+                .then(response => response.text())
+                .then(html => {
+                    const hasScriptInBody = html.includes('</body>') && html.indexOf('<script') > html.indexOf('<body');
+                    const status = hasScriptInBody ? 'PASS' : 'FAIL';
+                    results.innerHTML += `<p><strong>${status}:</strong> Script tag is in body (not head)</p>`;
+                })
+                .catch(err => {
+                    results.innerHTML += `<p><strong>FAIL:</strong> Could not check HTML - ${err}</p>`;
+                });
+        });
+    </script>
+</head>
+<body>
+    <h1>Deployment Verification Test</h1>
+    <p>Testing deployment for commit: fix: 将脚本移到 body 底部，修复 document.body 为 null 的错误</p>
+    <div id="results"></div>
+    <hr>
+    <h2>Manual Verification Steps:</h2>
+    <ol>
+        <li>Open <a href="https://bit-cook.github.io/self-coding-intro/" target="_blank">https://bit-cook.github.io/self-coding-intro/</a> in a browser</li>
+        <li>Check browser console (F12) for any errors</li>
+        <li>Verify loading animation appears and page becomes interactive</li>
+        <li>Confirm no "TypeError: Cannot read properties of null (reading 'appendChild')" error</li>
+    </ol>
+</body>
+</html>

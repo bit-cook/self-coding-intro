@@ -15,7 +15,6 @@
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -ms-transition: all 1s;
-  -o-transition: all 1s;
   transition: all 1s;
 }
 
@@ -71,7 +70,6 @@ pre:not(:empty) {
   -webkit-transform: translateX(95%);
   -moz-transform: translateX(95%);
   -ms-transform: translateX(95%);
-  -o-transform: translateX(95%);
   transform: translateX(95%);
   position: absolute;
 }
@@ -96,7 +94,6 @@ pre:not(:empty) {
 body {
   -webkit-perspective: 1000px;
   -moz-perspective: 1000px;
-  -ms-perspective: 1000px;
   perspective: 1000px;
 }
 
@@ -104,12 +101,10 @@ body {
   -webkit-transform: translateX(98.5%) rotateY(-10deg);
   -moz-transform: translateX(98.5%) rotateY(-10deg);
   -ms-transform: translateX(98.5%) rotateY(-10deg);
-  -o-transform: translateX(98.5%) rotateY(-10deg);
   transform: translateX(98.5%) rotateY(-10deg);
   -webkit-transform-origin: right;
   -moz-transform-origin: right;
   -ms-transform-origin: right;
-  -o-transform-origin: right;
   transform-origin: right;
   max-height: 93.1vh;
 }
@@ -123,11 +118,9 @@ pre:not(#style-text) {
   -webkit-transform: rotateY(10deg);
   -moz-transform: rotateY(10deg);
   -ms-transform: rotateY(10deg);
-  -o-transform: rotateY(10deg);
   transform: rotateY(10deg);
   -webkit-transform-origin: left;
   -moz-transform-origin: left;
   -ms-transform-origin: left;
-  -o-transform-origin: left;
   transform-origin: left;
 }
