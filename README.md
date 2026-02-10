@@ -65,7 +65,7 @@ git push origin gh-pages --force
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/self-coding-intro.git
+git clone https://github.com/bit-cook/self-coding-intro.git
 cd self-coding-intro
 
 # Install dependencies
@@ -149,5 +149,5 @@ MIT License - feel free to use this for your own portfolio or projects!
 
 ## Credits
 
-Inspired by [Jake Albaugh's](http://codepen.io/jakealbaugh/) work on self-typing code animations.
+Inspired by [Jake Albaugh's](https://codepen.io/jakealbaugh/) work on self-typing code animations.
 
