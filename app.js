@@ -24,16 +24,24 @@ let browserPrefix;
 
 // Wait for load to get started.
 document.addEventListener("DOMContentLoaded", async function() {
+  console.log('DOMContentLoaded fired');
   try {
+    console.log('Initializing...');
     getBrowserPrefix();
+    console.log('Browser prefix:', browserPrefix);
     populateHeader();
+    console.log('Header populated');
     getEls();
+    console.log('Elements retrieved');
     createEventHandlers();
+    console.log('Event handlers created');
     hideLoading();
+    console.log('Loading hidden, starting animation...');
     await startAnimation();
+    console.log('Animation complete');
   } catch (err) {
     console.error('Animation error:', err);
-    showError('动画启动失败，请刷新页面重试。');
+    showError('动画启动失败: ' + err.message);
   }
 });
 
@@ -114,6 +122,14 @@ let comma = /\D[\,]\s$/;
 let endOfBlock = /[^\/]\n\n$/;
 
 async function writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval){
+  if (!el) {
+    console.error('writeTo called with null element');
+    return;
+  }
+  if (!message) {
+    console.error('writeTo called with null message');
+    return;
+  }
   if (animationSkipped) {
     // Lol who needs proper flow control
     throw new Error('SKIP IT');
@@ -176,6 +192,11 @@ function getEls() {
   pgpEl = document.getElementById('pgp-text');
   skipAnimationEl = document.getElementById('skip-animation');
   pauseEl = document.getElementById('pause-resume');
+  
+  // Validate critical elements
+  if (!styleEl) console.error('style-text element not found');
+  if (!workEl) console.error('work-text element not found');
+  if (!style) console.error('style-tag element not found');
 }
 
 //
