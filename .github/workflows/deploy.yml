@@ -48,9 +48,11 @@ jobs:
           cp prestyles.css _site/
           cp work.txt _site/
           cp header.html _site/
+          # Disable Jekyll processing
+          touch _site/.nojekyll
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: '_site'
 
