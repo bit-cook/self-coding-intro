@@ -154,5 +154,3 @@ MIT 许可证 - 可自由用于你的个人作品集或项目！
 ## 致谢
 
 灵感来源于 [Jake Albaugh](http://codepen.io/jakealbaugh/) 的自输入代码动画作品。
-
-同时感谢 Samuel Reed 的 [strml.net](https://github.com/STRML/strml.net) 项目，该项目开创了自编程概念的先河，并激励了全球众多交互式开发者。
