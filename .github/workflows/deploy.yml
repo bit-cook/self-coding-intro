@@ -33,6 +33,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          echo "=== Checking dist directory ==="
+          ls -la dist/
+          echo "=== Checking dist/app.js exists ==="
+          test -f dist/app.js && echo "app.js exists" || echo "app.js MISSING!"
+          echo "=== File size ==="
+          du -h dist/app.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
