@@ -13,7 +13,7 @@ An interactive web page that demonstrates a self-typing code animation effect. W
 
 ## Demo
 
-[Live Demo](https://your-github-username.github.io/self-coding-intro)
+[Live Demo](https://bit-cook.github.io/self-coding-intro)
 
 ## 🚀 Deploy to GitHub Pages
 
@@ -150,3 +150,4 @@ MIT License - feel free to use this for your own portfolio or projects!
 ## Credits
 
 Inspired by [Jake Albaugh's](http://codepen.io/jakealbaugh/) work on self-typing code animations.
+
