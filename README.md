@@ -179,6 +179,6 @@ MIT License - feel free to use this for your own portfolio or projects!
 
 ## Credits
 
-Inspired by [Jake Albaugh's](http://codepen.io/jakealbaugh/) work on self-typing code animations.
+Inspired by [Jake Albaugh's](https://blog.codepen.io/2015/10/23/welcome-jake-albaugh/) work on self-typing code animations.
 
 Also thanks to Samuel Reed's [strml.net](https://github.com/STRML/strml.net) self-coding introduction project.
