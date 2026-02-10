@@ -9,7 +9,7 @@ import styles0 from './styles0.css';
 import styles1 from './styles1.css';
 import styles2 from './styles2.css';
 import styles3 from './styles3.css';
-const styleText = [styles0, styles1, styles2, styles3];
+let styleText = [styles0, styles1, styles2, styles3];
 import preStyles from './prestyles.css';
 import replaceURLs from './lib/replaceURLs';
 import {default as writeChar, writeSimpleChar, handleChar} from './lib/writeChar';
