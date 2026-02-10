@@ -1,5 +1,9 @@
 # Self-Coding Intro
 
+[简体中文](./README.zh-CN.md) | English
+
+---
+
 An interactive web page that demonstrates a self-typing code animation effect. Watch as CSS and content are written in real-time before your eyes!
 
 ## Features
@@ -17,38 +21,38 @@ An interactive web page that demonstrates a self-typing code animation effect. W
 
 ## 🚀 Deploy to GitHub Pages
 
-本项目已配置 GitHub Actions 自动部署。只需 push 到 main 分支即可自动部署。
+This project is configured with GitHub Actions for automatic deployment. Just push to the main branch to trigger deployment.
 
-### 自动部署步骤
+### Automatic Deployment Steps
 
-1. **Fork/Clone 项目到 GitHub**
+1. **Fork/Clone the project to GitHub**
 
-2. **启用 GitHub Pages**
-   - 进入仓库的 **Settings** → **Pages**
-   - **Build and deployment** → **Source** 选择 **GitHub Actions**
+2. **Enable GitHub Pages**
+   - Go to **Settings** → **Pages**
+   - **Build and deployment** → **Source** select **GitHub Actions**
 
-3. **Push 到 main 分支**
+3. **Push to main branch**
    ```bash
    git push origin main
    ```
    
-   推送后会自动触发部署工作流。
+   This will automatically trigger the deployment workflow.
 
-4. **查看部署状态**
-   - 进入仓库的 **Actions** 标签页查看部署进度
-   - 部署完成后，访问 `https://你的用户名.github.io/self-coding-intro/`
+4. **Check deployment status**
+   - Go to the **Actions** tab to view deployment progress
+   - After deployment, visit `https://your-username.github.io/self-coding-intro/`
 
-### 手动部署（可选）
+### Manual Deployment (Optional)
 
 ```bash
-# 安装依赖并构建
+# Install dependencies and build
 npm install
 npm run build
 
-# 手动推送到 gh-pages 分支
+# Manually push to gh-pages branch
 git checkout --orphan gh-pages
 git reset
-# 保留必要文件
+# Keep necessary files
 git add index.html dist/ ico/ img/ styles*.css work.txt header.html prestyles.css lib/
 git commit -m "Deploy"
 git push origin gh-pages --force
@@ -150,3 +154,5 @@ MIT License - feel free to use this for your own portfolio or projects!
 ## Credits
 
 Inspired by [Jake Albaugh's](http://codepen.io/jakealbaugh/) work on self-typing code animations.
+
+Also thanks to Samuel Reed for his amazing [strml.net](https://github.com/STRML/strml.net) project, which pioneered the self-coding concept and inspired interactive developers worldwide.
